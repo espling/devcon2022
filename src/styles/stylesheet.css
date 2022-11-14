@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Joystix Monospace';
+    src: url('JoystixMonospace-Regular.eot');
+    src: local('Joystix Monospace'), local('JoystixMonospace-Regular'),
+        url('JoystixMonospace-Regular.eot?#iefix') format('embedded-opentype'),
+        url('JoystixMonospace-Regular.woff2') format('woff2'),
+        url('JoystixMonospace-Regular.woff') format('woff'),
+        url('JoystixMonospace-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Joystix Proportional';
+    src: url('JoystixProportional-Regular.eot');
+    src: local('Joystix Proportional'), local('JoystixProportional-Regular'),
+        url('JoystixProportional-Regular.eot?#iefix') format('embedded-opentype'),
+        url('JoystixProportional-Regular.woff2') format('woff2'),
+        url('JoystixProportional-Regular.woff') format('woff'),
+        url('JoystixProportional-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
