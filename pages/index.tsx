@@ -12,6 +12,7 @@ import Logos from "@/components/Logo/Logos";
 import Agenda from "@/components/Logo/Agenda";
 import FadeIn from "@/components/Animation/FadeIn";
 import AgendaText from "@/components/AgendaText/AgendaText";
+import LinkElement from "@/components/Link/Link";
 // import Image from "next/image";
 // import bg1 from "../public/images/background1.png";
 // import bg2 from "../public/images/background2.png";
@@ -40,7 +41,7 @@ export default function Home() {
 
   const tlDefaults = {
     ease: "slow.inOut",
-    duration: 1.25,
+    duration: 0.5,
   };
 
   gsap.registerPlugin(SplitText);
@@ -78,6 +79,7 @@ export default function Home() {
         defaults: tlDefaults,
         onComplete: () => {
           currentRef.current = next;
+          setAnimate(false);
           if (page == 1) {
             requestAnimationFrame(() => {
               setImplodeText(true);
@@ -85,7 +87,7 @@ export default function Home() {
           } else {
             setImplodeText(false);
           }
-          setAnimate(false);
+
           // let state = Flip.getState(".box");
           // companyNamesContainerRef.current = companyNamesRef.current;
           // companyNamesRef.current.appendChild(companyNamesContainerRef.current);
@@ -247,28 +249,24 @@ export default function Home() {
 
       <main className="overflow-x-hidden overflow-y-hidden">
         <header className="fixed z-50 flex items-center justify-between h-2 p-4 w-60">
-          {page === 1 && (
-            <FadeIn>
-              <div
-                onClick={() => {
+          {page === 1 && !animate && (
+            <FadeIn delay={1}>
+              <LinkElement
+                text="back"
+                cb={() => {
                   if (!animate) setNextPage(0);
                 }}
-                className="cursor-pointer"
-              >
-                back
-              </div>
+              />
             </FadeIn>
           )}
-          {page === 0 && (
-            <FadeIn>
-              <div
-                onClick={() => {
+          {page === 0 && !animate && (
+            <FadeIn delay={1}>
+              <LinkElement
+                text="schedule"
+                cb={() => {
                   if (!animate) setNextPage(1);
                 }}
-                className="cursor-pointer"
-              >
-                schedule
-              </div>
+              />
             </FadeIn>
           )}
         </header>
@@ -291,13 +289,11 @@ export default function Home() {
             >
               <div
                 ref={(el) => (imagesRef.current[0] = el)}
+                className="absolute top-0 flex w-full h-full"
                 style={{
                   backgroundImage: 'url("/images/background1.png")',
-                  display: "flex",
-                  position: "absolute",
                   height: "100%",
                   width: "100%",
-                  top: "0",
                   overflow: "hidden",
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
@@ -306,12 +302,17 @@ export default function Home() {
               >
                 <div className="flex flex-col items-start mt-20 ml-10 sm:ml-auto sm:mr-40">
                   {/* <div className="flex -rotate-90 w-36 h-36 box"></div> */}
-                  <div className="w-48 sm:w-96">
-                    <Logo />
-                  </div>
-                  <div className="flex flex-col items-end mt-6 ml-auto w-36 h-36">
-                    <CompanyNames />
-                  </div>
+                  {!animate && (
+                    <FadeIn delay={0.5}>
+                      <div className="w-48 sm:w-96">
+                        <Logo />
+                      </div>
+
+                      <div className="flex flex-col items-end mt-6 ml-auto w-36 h-36">
+                        <CompanyNames />
+                      </div>
+                    </FadeIn>
+                  )}
                 </div>
               </div>
             </div>
@@ -335,21 +336,24 @@ export default function Home() {
                 className="absolute top-0 flex flex-col items-center justify-center w-full min-h-full mb-20 xl:justify-start"
                 style={{
                   backgroundImage: 'url("/images/background2.jpg")',
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
+                  // backgroundSize: "cover",
+                  backgroundPosition: "center top",
+                  // backgroundAttachment: "fixed",
+                  //position: "fixed",
+                  // backgroundRepeat: "no-repeat",
                 }}
               >
                 {implodeText && (
                   <div className="mt-8 mb-8 sm:mt-auto w-36 sm:mb-20 md:w-52">
-                    <FadeIn>
+                    <FadeIn delay={2.3}>
                       <Agenda />
                     </FadeIn>
                   </div>
                 )}
-                {implodeText && (
+                {implodeText && !animate && (
                   <div
                     ref={agendaContainer}
-                    className="grid max-w-screen-md grid-cols-2 gap-4 mx-4 xl:mx-auto lg:w-1/2"
+                    className="grid max-w-screen-md grid-cols-1 mx-4 gap-x-2 xl:mx-auto lg:w-1/2 gap-y-2"
                   >
                     <AgendaText size="lg" ref={agendaText}>
                       13:00 - 13:40
@@ -361,8 +365,28 @@ export default function Home() {
                     <AgendaText size="lg" ref={agendaText}>
                       14:00 - 14:40
                     </AgendaText>
+
                     <AgendaText size="md" ref={agendaText}>
-                      Sessions by substorm, tromb and cloudspin
+                      <div>
+                        Tromb dev - Type system by Peter Vikström, Robin Olsson,
+                        Tobias Åkeblom and Jimmie Espling
+                      </div>
+
+                      <div className="mt-6">
+                        Tromb UX/UI - ?????? by Robert Stjärnström
+                      </div>
+                      <div className="mt-6">
+                        Tromb PL - Best practice working in a remote team by
+                        Niklas Sörengård
+                      </div>
+                      <div className="mt-6">
+                        Substorm - Master or Servant - Assembling the
+                        Singularity by Niklas Karvonen
+                      </div>
+
+                      <div className="mt-6">
+                        Cloudspin - ?????????? by ???? ????
+                      </div>
                     </AgendaText>
 
                     <AgendaText size="lg" ref={agendaText}>
@@ -376,7 +400,24 @@ export default function Home() {
                       15:00 - 15:50
                     </AgendaText>
                     <AgendaText size="md" ref={agendaText}>
-                      Sessions by substorm, tromb and cloudspin
+                      <div>
+                        Tromb dev - Re-USA-billity by Peter Vikström, Robin
+                        Olsson, Tobias Åkeblom and Jimmie Espling
+                      </div>
+
+                      <div className="mt-6">
+                        Tromb UX/UI - ?????? by Hugo Wittorf
+                      </div>
+                      <div className="mt-6">
+                        Tromb PL - Being agile without Scrum by Niklas Sörengård
+                      </div>
+                      <div className="mt-6">
+                        Substorm - Cubicle Terminators by Niklas Karvonen
+                      </div>
+
+                      <div className="mt-6">
+                        Cloudspin - ???????+ by ???? ??????
+                      </div>
                     </AgendaText>
 
                     <AgendaText size="lg" ref={agendaText}>
@@ -395,7 +436,7 @@ export default function Home() {
                   </div>
                 )}
                 {implodeText && (
-                  <div className="pt-8 mt-auto mb-32 sm:mb-4">
+                  <div className="pt-8 mt-auto mb-20 sm:mb-4">
                     <FadeIn>
                       <Logos />
                     </FadeIn>

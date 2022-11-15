@@ -6,9 +6,10 @@ import { JsxElement } from "typescript";
 
 type Props = {
   children?: React.ReactNode;
+  delay?: number;
 };
 
-const FadeIn = ({ children }: Props) => {
+const FadeIn = ({ children, delay = 0.5 }: Props) => {
   const el = useRef<HTMLDivElement>(null);
 
   useIsomorphicLayoutEffect(() => {
@@ -16,14 +17,14 @@ const FadeIn = ({ children }: Props) => {
       x: 0,
       y: 0,
       opacity: 1,
-      delay: 1,
+      delay: delay,
       duration: 1.5,
       ease: "power4.out",
     });
   }, []);
 
   return (
-    <div className="opacity-0 transition-transform" ref={el}>
+    <div className="transition-transform opacity-0" ref={el}>
       {children}
     </div>
   );
