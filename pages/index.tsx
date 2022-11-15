@@ -235,10 +235,10 @@ export default function Home() {
     return () => ctx.revert();
   }, [implodeText]);
 
-  const overflowY = animate ? "overflow-y-hidden" : "overflow-y-auto";
+  // const overflowY = animate ? "overflow-y-hidden" : "overflow-y-auto";
 
   return (
-    <div className="overflow-x-hidden overflow-y-hidden flex flex-col">
+    <div className="flex flex-col overflow-x-hidden overflow-y-hidden">
       <Head>
         <title>Devcon 2022</title>
         <meta name="description" content="Spin Growth devcon 2022" />
@@ -246,7 +246,7 @@ export default function Home() {
       </Head>
 
       <main className="overflow-x-hidden overflow-y-hidden">
-        <header className="fixed flex items-center justify-between p-4 w-60 h-2 z-50">
+        <header className="fixed z-50 flex items-center justify-between h-2 p-4 w-60">
           {page === 1 && (
             <FadeIn>
               <div
@@ -275,18 +275,18 @@ export default function Home() {
 
         <section
           ref={(el) => (sectionsRef.current[0] = el)}
-          // className="h-screen max-w-xl t-0 fixed will-change-transform overflow-y-hidden overflow-x-hidden"
-          className="w-full t-0 fixed overflow-y-hidden overflow-x-hidden"
+          // className="fixed h-screen max-w-xl overflow-x-hidden overflow-y-hidden t-0 will-change-transform"
+          className="fixed w-full overflow-x-hidden overflow-y-hidden t-0"
         >
           <div
             ref={(el) => (outerRef.current[0] = el)}
-            // className="h-full w-full will-change-transform overflow-y-hidden overflow-x-hidden"
+            // className="w-full h-full overflow-x-hidden overflow-y-hidden will-change-transform"
             className="w-full overflow-y-hidden"
           >
             <div
               ref={(el) => (innerRef.current[0] = el)}
-              // className="h-full w-full will-change-transform overflow-y-hidden overflow-x-hidden"
-              className="h-screen w-full overflow-y-hidden overflow-x-hidden"
+              // className="w-full h-full overflow-x-hidden overflow-y-hidden will-change-transform"
+              className="w-full h-screen overflow-x-hidden overflow-y-hidden"
               // {clsx('text-indigo-600 hover:text-indigo-900', className)}
             >
               <div
@@ -304,34 +304,12 @@ export default function Home() {
                   backgroundPosition: "center center",
                 }}
               >
-                {/* <Image
-                  alt="devcon 2022"
-                  src={bg1}
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="left"
-                  quality={100}
-                  className="flex items-center justify-center absolute h-full w-full t-0"
-                  // className={"opacity-100 md:opacity-70"}
-                /> */}
-                <div
-                  className=" flex flex-col items-start ml-10 sm:ml-auto sm:mr-40 mt-20"
-                  // ref={companyEl}
-                >
-                  <div
-                    className="flex w-36 h-36 -rotate-90 box"
-                    // ref={companyNamesRef}
-                  >
-                    {/* <CompanyNames /> */}
-                  </div>
-                  <div className="w-96">
+                <div className="flex flex-col items-start mt-20 ml-10 sm:ml-auto sm:mr-40">
+                  {/* <div className="flex -rotate-90 w-36 h-36 box"></div> */}
+                  <div className="w-48 sm:w-96">
                     <Logo />
                   </div>
-                  <div
-                    className="flex w-36 h-36 flex-col items-end ml-auto mt-6"
-
-                    // ref={companyNamesContainerRef}
-                  >
+                  <div className="flex flex-col items-end mt-6 ml-auto w-36 h-36">
                     <CompanyNames />
                   </div>
                 </div>
@@ -342,7 +320,7 @@ export default function Home() {
 
         <section
           ref={(el) => (sectionsRef.current[1] = el)}
-          className="w-full t-0 fixed overflow-y-hidden overflow-x-hidden"
+          className="fixed w-full overflow-x-hidden overflow-y-hidden t-0"
         >
           <div
             ref={(el) => (outerRef.current[1] = el)}
@@ -350,27 +328,19 @@ export default function Home() {
           >
             <div
               ref={(el) => (innerRef.current[1] = el)}
-              className="h-screen w-full overflow-x-hidden"
+              className="w-full h-screen overflow-x-hidden"
             >
               <div
                 ref={(el) => (imagesRef.current[1] = el)}
-                className="mb-20"
+                className="absolute top-0 flex flex-col items-center justify-center w-full min-h-full mb-20 xl:justify-start"
                 style={{
                   backgroundImage: 'url("/images/background2.jpg")',
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  position: "absolute",
-                  minHeight: "100%",
-                  width: "100%",
-                  top: "0",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
               >
                 {implodeText && (
-                  <div className="w-52 mb-20">
+                  <div className="mt-8 mb-8 sm:mt-auto w-36 sm:mb-20 md:w-52">
                     <FadeIn>
                       <Agenda />
                     </FadeIn>
@@ -379,7 +349,7 @@ export default function Home() {
                 {implodeText && (
                   <div
                     ref={agendaContainer}
-                    className="grid grid-cols-2 gap-4 max-w-screen-md xl:mx-auto lg:w-1/2 mx-4"
+                    className="grid max-w-screen-md grid-cols-2 gap-4 mx-4 xl:mx-auto lg:w-1/2"
                   >
                     <AgendaText size="lg" ref={agendaText}>
                       13:00 - 13:40
@@ -424,14 +394,21 @@ export default function Home() {
                     </AgendaText>
                   </div>
                 )}
+                {implodeText && (
+                  <div className="pt-8 mt-auto mb-32 sm:mb-4">
+                    <FadeIn>
+                      <Logos />
+                    </FadeIn>
+                  </div>
+                )}
               </div>
             </div>
           </div>
-          <div className="bottom-0 text-white">Test</div>
+          {/* <div className="bottom-0 text-white">Test</div> */}
         </section>
-        <footer className="fixed bottom-10 p-4 w-60 h-2 left-1/2 -translate-x-1/2 z-50">
+        {/* <footer className="fixed z-50 h-2 p-4 -translate-x-1/2 bottom-10 w-60 left-1/2">
           {page === 1 && <Logos />}
-        </footer>
+        </footer> */}
       </main>
     </div>
   );

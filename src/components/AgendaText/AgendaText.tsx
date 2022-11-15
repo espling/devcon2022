@@ -10,7 +10,7 @@ declare module "react" {
 
 const sizes = {
   md: "text-xs lg:text-sm",
-  lg: "text-sm lg:text-lg",
+  lg: "text-xs lg:text-lg",
 };
 
 type Props = {
