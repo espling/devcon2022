@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { gsap } from "gsap";
-import Flip from "gsap/dist/Flip";
+// import Image from "next/image";
 
 import { SplitText } from "@/lib/SplitText";
 
@@ -13,23 +13,14 @@ import Agenda from "@/components/Logo/Agenda";
 import FadeIn from "@/components/Animation/FadeIn";
 import AgendaText from "@/components/AgendaText/AgendaText";
 import LinkElement from "@/components/Link/Link";
-// import Image from "next/image";
+import { randomNumber } from "@/lib/randomNumber";
 // import bg1 from "../public/images/background1.png";
 // import bg2 from "../public/images/background2.png";
-
-const randomNumber = (min: number, max: number) => {
-  return Math.floor(Math.random() * (1 + max - min) + min);
-};
 
 export default function Home() {
   const sectionsRef = useRef<Array<HTMLElement | null>>([]);
   const outerRef = useRef<Array<HTMLElement | null>>([]);
   const innerRef = useRef<Array<HTMLElement | null>>([]);
-  // const companyNamesRef = useRef<HTMLDivElement | null>(null);
-  // const companyNamesContainerRef = useRef<HTMLDivElement | null>(null);
-
-  // const companyEl = useRef<HTMLDivElement>();
-  // const q = gsap.utils.selector(companyEl);
 
   const imagesRef = useRef<Array<HTMLElement | null>>([]);
   const agendaText = useRef<any>();
@@ -45,21 +36,38 @@ export default function Home() {
   };
 
   gsap.registerPlugin(SplitText);
-  // gsap.registerPlugin(Flip);
+
+  const [loaded, setLoaded] = useState(false);
+  // const refImage1 = useRef<HTMLDivElement>(null);
+
+  function checkImageLoaded() {
+    const src = imagesRef.current[0]?.style.backgroundImage;
+    if (src != null) {
+      //@ts-ignore
+      const url = src.match(/\((.*?)\)/)[1].replace(/('|")/g, "");
+      let img: HTMLImageElement = new window.Image();
+      img.onload = function () {
+        setLoaded(true);
+      };
+      img.src = url;
+      if (img.complete) setLoaded(true);
+    }
+  }
 
   useIsomorphicLayoutEffect(() => {
     gsap.set(outerRef.current, { yPercent: 100 });
     gsap.set(innerRef.current, { yPercent: -100 });
-    // gsap.set(agendaText.current, { opacity: 0 });
   }, []);
 
   useIsomorphicLayoutEffect(() => {
+    checkImageLoaded();
+    if (!loaded) return;
     if (page === 0 && currentRef.current != undefined) {
       slideOut();
     } else {
       slideDown();
     }
-  }, [page]);
+  }, [page, loaded]);
 
   function slideDown() {
     setAnimate(true);
@@ -237,13 +245,11 @@ export default function Home() {
     return () => ctx.revert();
   }, [implodeText]);
 
-  // const overflowY = animate ? "overflow-y-hidden" : "overflow-y-auto";
-
   return (
     <div className="flex flex-col overflow-x-hidden overflow-y-hidden">
       <Head>
         <title>Devcon 2022</title>
-        <meta name="description" content="Spin Growth devcon 2022" />
+        <meta name="description" content="Spin Growth Devcon 2022" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -259,7 +265,7 @@ export default function Home() {
               />
             </FadeIn>
           )}
-          {page === 0 && !animate && (
+          {page === 0 && !animate && loaded && (
             <FadeIn delay={1}>
               <LinkElement
                 text="schedule"
@@ -273,20 +279,17 @@ export default function Home() {
 
         <section
           ref={(el) => (sectionsRef.current[0] = el)}
-          // className="fixed h-screen max-w-xl overflow-x-hidden overflow-y-hidden t-0 will-change-transform"
           className="fixed w-full overflow-x-hidden overflow-y-hidden t-0"
         >
           <div
             ref={(el) => (outerRef.current[0] = el)}
-            // className="w-full h-full overflow-x-hidden overflow-y-hidden will-change-transform"
             className="w-full overflow-y-hidden"
           >
             <div
               ref={(el) => (innerRef.current[0] = el)}
-              // className="w-full h-full overflow-x-hidden overflow-y-hidden will-change-transform"
               className="w-full h-screen overflow-x-hidden overflow-y-hidden"
-              // {clsx('text-indigo-600 hover:text-indigo-900', className)}
             >
+              {/* <div ref={(el) => (innerRef.current[0] = el)} className=""> */}
               <div
                 ref={(el) => (imagesRef.current[0] = el)}
                 className="absolute top-0 flex w-full h-full"
@@ -300,8 +303,20 @@ export default function Home() {
                   backgroundPosition: "center center",
                 }}
               >
+                {/* <Image
+                  ref={imageRef1}
+                  alt="Devcon 2022"
+                  onLoad={() => setLoaded(true)}
+                  src={bg1}
+                  layout=""
+                  className="absolute top-0 flex w-full h-full"
+                  objectFit="cover"
+                  objectPosition="center center"
+                  placeholder="blur"
+                  quality={100}
+                /> */}
+
                 <div className="flex flex-col items-start mt-20 ml-10 sm:ml-auto sm:mr-40">
-                  {/* <div className="flex -rotate-90 w-36 h-36 box"></div> */}
                   {!animate && (
                     <FadeIn delay={0.5}>
                       <div className="w-48 sm:w-96">
@@ -336,15 +351,11 @@ export default function Home() {
                 className="absolute top-0 flex flex-col items-center justify-center w-full min-h-full mb-20 xl:justify-start"
                 style={{
                   backgroundImage: 'url("/images/background2.jpg")',
-                  // backgroundSize: "cover",
                   backgroundPosition: "center top",
-                  // backgroundAttachment: "fixed",
-                  //position: "fixed",
-                  // backgroundRepeat: "no-repeat",
                 }}
               >
                 {implodeText && (
-                  <div className="mt-8 mb-8 sm:mt-auto w-36 sm:mb-20 md:w-52">
+                  <div className="mt-8 mb-8 w-36 sm:mb-20 md:w-52">
                     <FadeIn delay={2.3}>
                       <Agenda />
                     </FadeIn>
@@ -376,8 +387,8 @@ export default function Home() {
                         Tromb UX/UI - ?????? by Robert Stjärnström
                       </div>
                       <div className="mt-6">
-                        Tromb PL - Best practice working in a remote team by
-                        Niklas Sörengård
+                        Tromb PL - Accelerators for remote teams by Niklas
+                        Sörengård
                       </div>
                       <div className="mt-6">
                         Substorm - Master or Servant - Assembling the
@@ -385,7 +396,7 @@ export default function Home() {
                       </div>
 
                       <div className="mt-6">
-                        Cloudspin - ?????????? by ???? ????
+                        Cloudspin - Teams Operator Connect
                       </div>
                     </AgendaText>
 
@@ -409,14 +420,15 @@ export default function Home() {
                         Tromb UX/UI - ?????? by Hugo Wittorf
                       </div>
                       <div className="mt-6">
-                        Tromb PL - Being agile without Scrum by Niklas Sörengård
+                        Tromb PL - Agile as fuck but fuck scrum by Niklas
+                        Sörengård
                       </div>
                       <div className="mt-6">
                         Substorm - Cubicle Terminators by Niklas Karvonen
                       </div>
 
                       <div className="mt-6">
-                        Cloudspin - ???????+ by ???? ??????
+                        Cloudspin - Tune in to Intune Session
                       </div>
                     </AgendaText>
 

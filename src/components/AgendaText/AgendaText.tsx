@@ -1,12 +1,12 @@
 import React from "react";
 import clsx from "clsx";
+import { Ref } from "@/types/types";
 
-// Redecalare forwardRef
-declare module "react" {
-  function forwardRef<T, P = {}>(
-    render: (props: P, ref: React.Ref<T>) => React.ReactElement | null
-  ): (props: P & React.RefAttributes<T>) => React.ReactElement | null;
-}
+// declare module "react" {
+//   function forwardRef<T, P = {}>(
+//     render: (props: P, ref: React.Ref<T>) => React.ReactElement | null
+//   ): (props: P & React.RefAttributes<T>) => React.ReactElement | null;
+// }
 
 const sizes = {
   md: "text-xs lg:text-sm",
@@ -17,8 +17,6 @@ type Props = {
   children: React.ReactNode;
   size: keyof typeof sizes;
 };
-
-export type Ref = HTMLDivElement;
 
 const AgendaText = (props: Props, ref: React.ForwardedRef<Ref>) => {
   return (

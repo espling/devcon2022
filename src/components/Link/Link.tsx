@@ -6,7 +6,8 @@ type Props = {
 const LinkElement: React.FC<Props> = ({ text, cb }) => {
   return (
     <div
-      className="mt-2 text-lg underline cursor-pointer underline-offset-4"
+      role="link"
+      className="mt-2 text-lg underline cursor-pointer underline-offset-4 link-underline"
       onClick={() => cb()}
     >
       {text}
