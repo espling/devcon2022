@@ -9,8 +9,8 @@ import { Ref } from "@/types/types";
 // }
 
 const sizes = {
-  md: "text-xs lg:text-sm",
-  lg: "text-lg lg:text-xl mt-6  ",
+  md: "text-xs lg:text-sm font-opensans",
+  lg: "text-lg lg:text-xl mt-6 font-opensans",
 };
 
 type Props = {

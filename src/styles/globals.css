@@ -24,11 +24,11 @@
   }
 
   p {
-    @apply text-xs mt-5 tracking-tight;
+    @apply text-sm tracking-tight;
   }
 
   h1 {
-    @apply tracking-tight;
+    @apply tracking-tight text-xl;
   }
 
   h2 {
@@ -42,6 +42,14 @@
 
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "OpenSans";
+  src: url("/fonts/static/OpenSans/OpenSans-Light.ttf");
+  src: url("/fonts/static/OpenSans/OpenSans-Medium.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
 
 @font-face {
   font-family: "Joystix Monospace";

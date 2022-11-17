@@ -6,14 +6,17 @@ import { SplitText } from "@/lib/SplitText";
 
 import useIsomorphicLayoutEffect from "@/hooks/useIsomorphicLayoutEffect";
 import { useRef, useState } from "react";
-import Logo from "@/components/Logo/Logo";
-import CompanyNames from "@/components/Logo/CompanyNames";
+// import Logo from "@/components/Logo/Logo";
+// import CompanyNames from "@/components/Logo/CompanyNames";
 import Logos from "@/components/Logo/Logos";
 import Agenda from "@/components/Logo/Agenda";
 import FadeIn from "@/components/Animation/FadeIn";
 import AgendaText from "@/components/AgendaText/AgendaText";
+import Text from "@/components/Text/Text";
 import LinkElement from "@/components/Link/Link";
 import { randomNumber } from "@/lib/randomNumber";
+import Link from "next/link";
+import DevconLogo from "@/components/Logo/DevconLogo";
 // import bg1 from "../public/images/background1.png";
 // import bg2 from "../public/images/background2.png";
 
@@ -29,7 +32,7 @@ export default function Home() {
   const [page, setNextPage] = useState(0);
   const [implodeText, setImplodeText] = useState(false);
   const [animate, setAnimate] = useState(false);
-
+  const [chars, setChars] = useState<any[]>();
   const tlDefaults = {
     ease: "slow.inOut",
     duration: 0.5,
@@ -57,6 +60,9 @@ export default function Home() {
   useIsomorphicLayoutEffect(() => {
     gsap.set(outerRef.current, { yPercent: 100 });
     gsap.set(innerRef.current, { yPercent: -100 });
+    const splitText = new SplitText("#agenda-text");
+    const chars = splitText.chars;
+    setChars(chars);
   }, []);
 
   useIsomorphicLayoutEffect(() => {
@@ -90,8 +96,9 @@ export default function Home() {
           setAnimate(false);
           if (page == 1) {
             requestAnimationFrame(() => {
-              setImplodeText(true);
+              animateText();
             });
+            // setImplodeText(true);
           } else {
             setImplodeText(false);
           }
@@ -154,8 +161,6 @@ export default function Home() {
 
   async function animateText() {
     // const ctx = gsap.context(() => {
-    const splitText = new SplitText("#agenda-text");
-    const chars = splitText.chars;
 
     if (chars) {
       for (let x = 0; x < chars!.length; x++) {
@@ -181,7 +186,7 @@ export default function Home() {
             rotationY: 0,
             opacity: 1,
             duration: 1,
-            delay: 1 + Math.random() * 0.5,
+            delay: 0.2 + Math.random() * 0.3,
             ease: "power4.out",
           }
         );
@@ -235,15 +240,17 @@ export default function Home() {
       .set(imagesRef.current[currentRef.current ?? 0], { yPercent: 0 });
   }
 
-  useIsomorphicLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      if (implodeText) {
-        animateText();
-      }
-    });
-    // return => clearTimeout(timeid);
-    return () => ctx.revert();
-  }, [implodeText]);
+  // useIsomorphicLayoutEffect(() => {
+  //   const ctx = gsap.context(() => {
+  //     if (implodeText) {
+  //       animateText();
+  //     }
+  //   });
+  //   // return => clearTimeout(timeid);
+  //   return () => ctx.revert();
+  // }, [implodeText]);
+
+  const textOpacity = page === 1 && animate ? "opacity-0" : "opacity-100";
 
   return (
     <div className="flex flex-col overflow-x-hidden overflow-y-hidden">
@@ -254,11 +261,11 @@ export default function Home() {
       </Head>
 
       <main className="overflow-x-hidden overflow-y-hidden">
-        <header className="fixed z-50 flex items-center justify-between h-2 p-4 w-60">
+        <header className="fixed z-50 flex items-center justify-between h-2 p-4">
           {page === 1 && !animate && (
             <FadeIn delay={1}>
               <LinkElement
-                text="back"
+                text="BACK"
                 cb={() => {
                   if (!animate) setNextPage(0);
                 }}
@@ -266,14 +273,25 @@ export default function Home() {
             </FadeIn>
           )}
           {page === 0 && !animate && loaded && (
-            <FadeIn delay={1}>
-              <LinkElement
-                text="schedule"
-                cb={() => {
-                  if (!animate) setNextPage(1);
-                }}
-              />
-            </FadeIn>
+            <div className="flex items-end justify-between">
+              {" "}
+              <FadeIn delay={1}>
+                <LinkElement
+                  text="SCHEDULE"
+                  cb={() => {
+                    if (!animate) setNextPage(1);
+                  }}
+                />
+              </FadeIn>
+              <FadeIn delay={1}>
+                <Link
+                  href="rumble"
+                  className="mt-2 ml-8 text-lg underline cursor-pointer underline-offset-4 link-underline"
+                >
+                  RUMBLE
+                </Link>
+              </FadeIn>
+            </div>
           )}
         </header>
 
@@ -289,47 +307,39 @@ export default function Home() {
               ref={(el) => (innerRef.current[0] = el)}
               className="w-full h-screen overflow-x-hidden overflow-y-hidden"
             >
+              <div className="w-3/4 mt-20 ml-10 sm:w-1/2 xl:w-1/3 sm:ml-auto sm:mr-40">
+                {!animate && (
+                  <FadeIn delay={0.5}>
+                    {/* <div className="w-48 sm:w-96">
+                        <Logo />
+                      </div>
+
+                      <div className="flex flex-col items-end mt-6 ml-auto w-36 h-36">
+                        <CompanyNames />
+                      </div> */}
+
+                    <DevconLogo />
+                  </FadeIn>
+                )}
+              </div>
+
               {/* <div ref={(el) => (innerRef.current[0] = el)} className=""> */}
               <div
                 ref={(el) => (imagesRef.current[0] = el)}
-                className="absolute top-0 flex w-full h-full"
+                className="absolute top-0 flex w-full h-full animate-blurIn"
                 style={{
                   backgroundImage: 'url("/images/background1.png")',
                   height: "100%",
+                  zIndex: "-1",
+                  // backdropFilter: "blur(18px)",
+                  // filter: "blur(18px)",
                   width: "100%",
                   overflow: "hidden",
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "center center",
                 }}
-              >
-                {/* <Image
-                  ref={imageRef1}
-                  alt="Devcon 2022"
-                  onLoad={() => setLoaded(true)}
-                  src={bg1}
-                  layout=""
-                  className="absolute top-0 flex w-full h-full"
-                  objectFit="cover"
-                  objectPosition="center center"
-                  placeholder="blur"
-                  quality={100}
-                /> */}
-
-                <div className="flex flex-col items-start mt-20 ml-10 sm:ml-auto sm:mr-40">
-                  {!animate && (
-                    <FadeIn delay={0.5}>
-                      <div className="w-48 sm:w-96">
-                        <Logo />
-                      </div>
-
-                      <div className="flex flex-col items-end mt-6 ml-auto w-36 h-36">
-                        <CompanyNames />
-                      </div>
-                    </FadeIn>
-                  )}
-                </div>
-              </div>
+              ></div>
             </div>
           </div>
         </section>
@@ -344,116 +354,145 @@ export default function Home() {
           >
             <div
               ref={(el) => (innerRef.current[1] = el)}
-              className="w-full h-screen overflow-x-hidden"
+              className="flex flex-col w-full h-screen overflow-x-hidden"
             >
               <div
                 ref={(el) => (imagesRef.current[1] = el)}
                 className="absolute top-0 flex flex-col items-center justify-center w-full min-h-full mb-20 xl:justify-start"
                 style={{
                   backgroundImage: 'url("/images/background2.jpg")',
-                  backgroundPosition: "center top",
+                  // filter: "blur(18px)",
+                  // zIndex: "-1",
+                  // backdropFilter: "blur(18px)",
+                  // backgroundPosition: "center top",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  // backgroundPosition: "center center",
                 }}
               >
-                {implodeText && (
-                  <div className="mt-8 mb-8 w-36 sm:mb-20 md:w-52">
-                    <FadeIn delay={2.3}>
+                {/* {implodeText && !animate && ( */}
+                <div
+                  ref={agendaContainer}
+                  className={`grid max-w-screen-md grid-cols-1 mx-4 gap-x-2 xl:mx-auto lg:w-1/2 gap-y-1 ${textOpacity}`}
+                >
+                  {/* {!animate && page === 1 && ( */}
+                  <div className="mt-20 w-36 md:w-52">
+                    <FadeIn delay={0.6}>
                       <Agenda />
                     </FadeIn>
                   </div>
-                )}
-                {implodeText && !animate && (
-                  <div
-                    ref={agendaContainer}
-                    className="grid max-w-screen-md grid-cols-1 mx-4 gap-x-2 xl:mx-auto lg:w-1/2 gap-y-2"
-                  >
-                    <AgendaText size="lg" ref={agendaText}>
-                      13:00 - 13:40
-                    </AgendaText>
-                    <AgendaText size="md" ref={agendaText}>
-                      Joint introduction
-                    </AgendaText>
+                  {/* )} */}
+                  <AgendaText size="lg" ref={agendaText}>
+                    <Text tagName="div"> 13:00 - 13:40</Text>
+                  </AgendaText>
+                  <AgendaText size="md" ref={agendaText}>
+                    <Text tagName="div"> Joint introduction</Text>
+                  </AgendaText>
 
-                    <AgendaText size="lg" ref={agendaText}>
-                      14:00 - 14:40
-                    </AgendaText>
+                  <AgendaText size="lg" ref={agendaText}>
+                    <Text tagName="div"> 14:00 - 14:40</Text>
+                  </AgendaText>
 
-                    <AgendaText size="md" ref={agendaText}>
-                      <div>
-                        Tromb dev - Type system by Peter Vikström, Robin Olsson,
-                        Tobias Åkeblom and Jimmie Espling
-                      </div>
+                  <AgendaText size="md" ref={agendaText}>
+                    <div>
+                      <Text tagName="div">Let the type guide the way</Text>
+                      <Text tagName="p">
+                        Peter Vikström, Robin Olsson, Tobias Åkeblom and Jimmie
+                        Espling
+                      </Text>
+                    </div>
 
-                      <div className="mt-6">
-                        Tromb UX/UI - ?????? by Robert Stjärnström
-                      </div>
-                      <div className="mt-6">
-                        Tromb PL - Accelerators for remote teams by Niklas
-                        Sörengård
-                      </div>
-                      <div className="mt-6">
-                        Substorm - Master or Servant - Assembling the
-                        Singularity by Niklas Karvonen
-                      </div>
+                    <div className="mt-6">
+                      <Text tagName="div">
+                        Design Guidelines från Apple, Google & Microsoft: How
+                        are they different?
+                      </Text>
+                      <Text tagName="p">Robert Stjärnström</Text>
+                    </div>
+                    <div className="mt-6">
+                      <Text tagName="div">Accelerators for remote teams</Text>
+                      <Text tagName="p">Niklas Sörengård</Text>
+                    </div>
+                    <div className="mt-6">
+                      <Text tagName="div">
+                        Master or Servant - Piecing together the Singularity
+                      </Text>
+                      <Text tagName="p">Niklas Karvonen</Text>
+                    </div>
 
-                      <div className="mt-6">
-                        Cloudspin - Teams Operator Connect
-                      </div>
-                    </AgendaText>
+                    <div className="mt-6">
+                      <Text tagName="div">Teams Operator Connect</Text>
+                    </div>
+                  </AgendaText>
 
-                    <AgendaText size="lg" ref={agendaText}>
-                      14:40 - 15:00
-                    </AgendaText>
-                    <AgendaText size="md" ref={agendaText}>
-                      Coffe
-                    </AgendaText>
+                  <AgendaText size="lg" ref={agendaText}>
+                    <Text tagName="div">14:40 - 15:00</Text>
+                  </AgendaText>
+                  <AgendaText size="md" ref={agendaText}>
+                    <Text tagName="div"> Coffe</Text>
+                  </AgendaText>
 
-                    <AgendaText size="lg" ref={agendaText}>
-                      15:00 - 15:50
-                    </AgendaText>
-                    <AgendaText size="md" ref={agendaText}>
-                      <div>
-                        Tromb dev - Re-USA-billity by Peter Vikström, Robin
-                        Olsson, Tobias Åkeblom and Jimmie Espling
-                      </div>
+                  <AgendaText size="lg" ref={agendaText}>
+                    <Text tagName="div">15:00 - 15:50</Text>
+                  </AgendaText>
+                  <AgendaText size="md" ref={agendaText}>
+                    <div>
+                      <Text tagName="div">
+                        Make it easy to be lazy - Reusable code
+                      </Text>
+                      <Text tagName="p">
+                        Peter Vikström, Robin Olsson, Tobias Åkeblom and Jimmie
+                        Espling
+                      </Text>
+                    </div>
 
-                      <div className="mt-6">
-                        Tromb UX/UI - ?????? by Hugo Wittorf
-                      </div>
-                      <div className="mt-6">
-                        Tromb PL - Agile as fuck but fuck scrum by Niklas
-                        Sörengård
-                      </div>
-                      <div className="mt-6">
-                        Substorm - Cubicle Terminators by Niklas Karvonen
-                      </div>
+                    <div className="mt-6">
+                      <Text tagName="div">
+                        Defining the Role of Design in Our Climate
+                      </Text>
+                      <Text tagName="p">Hugo Wittorf</Text>
+                    </div>
+                    <div className="mt-6">
+                      <Text tagName="div">
+                        When agile is right but the method is wrong
+                      </Text>
+                      <Text tagName="p">Niklas Sörengård</Text>
+                    </div>
+                    <div className="mt-6">
+                      <Text tagName="div">
+                        Cubicle Terminators - The Office Work Revolution
+                      </Text>
+                      <Text tagName="p">Niklas Karvonen</Text>
+                    </div>
 
-                      <div className="mt-6">
-                        Cloudspin - Tune in to Intune Session
-                      </div>
-                    </AgendaText>
+                    <div className="mt-6">
+                      <Text tagName="div">Tune in to Intune Session</Text>
+                    </div>
+                  </AgendaText>
 
-                    <AgendaText size="lg" ref={agendaText}>
-                      16:10 - 18:00
-                    </AgendaText>
-                    <AgendaText size="md" ref={agendaText}>
-                      Team rumble
-                    </AgendaText>
+                  <AgendaText size="lg" ref={agendaText}>
+                    <Text tagName="div"> 16:10 - 18:00</Text>
+                  </AgendaText>
+                  <AgendaText size="md" ref={agendaText}>
+                    <Text tagName="div">Team rumble</Text>
+                  </AgendaText>
 
-                    <AgendaText size="lg" ref={agendaText}>
-                      18:00 - 22:00
-                    </AgendaText>
-                    <AgendaText size="md" ref={agendaText}>
-                      AW and Food
-                    </AgendaText>
-                  </div>
-                )}
-                {implodeText && (
+                  <AgendaText size="lg" ref={agendaText}>
+                    <Text tagName="div">18:00 - 22:00</Text>
+                  </AgendaText>
+                  <AgendaText size="md" ref={agendaText}>
+                    <Text tagName="div">AW and Food</Text>
+                  </AgendaText>
+                </div>
+
+                {/* )} */}
+                {/* {implodeText && (
                   <div className="pt-8 mt-auto mb-20 sm:mb-4">
                     <FadeIn>
                       <Logos />
                     </FadeIn>
                   </div>
-                )}
+                )} */}
               </div>
             </div>
           </div>
