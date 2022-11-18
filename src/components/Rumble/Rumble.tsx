@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import Head from "next/head";
 import Image from "next/image";
 import backgroundImage from "../../../public/images/background2.jpg";
 
@@ -73,6 +74,11 @@ export const Rumble: NextPage = () => {
 
   return (
     <div>
+      <Head>
+        <title>Devcon 2022</title>
+        <meta name="description" content="Spin Growth Devcon 2022" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <header className="fixed z-50 flex items-center justify-between h-2 p-4">
         <FadeIn delay={1}>
           <Link

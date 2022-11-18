@@ -291,7 +291,6 @@ export default function Home() {
         <title>Devcon 2022</title>
         <meta name="description" content="Spin Growth Devcon 2022" />
         <link rel="icon" href="/favicon.ico" />
-        <meta property="og:image" content="/images/OG_IMAGE.png" />
       </Head>
 
       <main className="overflow-x-hidden overflow-y-hidden">
