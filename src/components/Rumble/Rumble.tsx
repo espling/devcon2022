@@ -9,9 +9,12 @@ import { SplitText } from "@/lib/SplitText";
 import { useRef } from "react";
 import FadeIn from "../Animation/FadeIn";
 import Link from "next/link";
+import PinkLine from "../PinkLine/PinkLine";
 
 export const Rumble: NextPage = () => {
   const text = useRef<HTMLDivElement>();
+  // const imagesRef = useRef<HTMLElement | null>();
+  // const [loaded, setLoaded] = useState(false);
 
   gsap.registerPlugin(SplitText);
 
@@ -20,6 +23,24 @@ export const Rumble: NextPage = () => {
       animateText();
     });
   }, []);
+
+  // function checkImageLoaded() {
+  //   const src = imagesRef.current?.style.backgroundImage;
+  //   if (src != null) {
+  //     //@ts-ignore
+  //     const url = src.match(/\((.*?)\)/)[1].replace(/('|")/g, "");
+  //     let img: HTMLImageElement = new window.Image();
+  //     img.onload = function () {
+  //       setLoaded(true);
+  //     };
+  //     img.src = url;
+  //     if (img.complete) setLoaded(true);
+  //   }
+  // }
+
+  // useIsomorphicLayoutEffect(() => {
+  //   checkImageLoaded();
+  // }, []);
 
   async function animateText() {
     console.log(text.current);
@@ -70,15 +91,15 @@ export const Rumble: NextPage = () => {
           layout="fill"
           className="absolute top-0 flex flex-col items-center justify-center"
           objectFit="cover"
-          // objectPosition="center center"
+          objectPosition="center center"
           placeholder="blur"
           quality={100}
         />
-
+        {/* <PinkLine /> */}
         <div
           id="split-text"
           // ref={(el) => (text.current = el)}
-          className="flex items-center justify-center w-full h-full text-xl uppercase font-opensans"
+          className="flex items-center justify-center w-full h-full text-2xl uppercase md:text-4xl font-opensans"
         >
           Coming soon...
           <span className="transition duration-75 opacity-0 animate-pulse2">

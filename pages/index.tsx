@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { SplitText } from "@/lib/SplitText";
 
 import useIsomorphicLayoutEffect from "@/hooks/useIsomorphicLayoutEffect";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // import Logo from "@/components/Logo/Logo";
 // import CompanyNames from "@/components/Logo/CompanyNames";
 import Logos from "@/components/Logo/Logos";
@@ -13,10 +13,11 @@ import Agenda from "@/components/Logo/Agenda";
 import FadeIn from "@/components/Animation/FadeIn";
 import AgendaText from "@/components/AgendaText/AgendaText";
 import Text from "@/components/Text/Text";
-import LinkElement from "@/components/Link/Link";
+import LinkElement from "@/components/Link/LinkElement";
 import { randomNumber } from "@/lib/randomNumber";
 import Link from "next/link";
 import DevconLogo from "@/components/Logo/DevconLogo";
+import PinkLine from "@/components/PinkLine/PinkLine";
 // import bg1 from "../public/images/background1.png";
 // import bg2 from "../public/images/background2.png";
 
@@ -26,10 +27,12 @@ export default function Home() {
   const innerRef = useRef<Array<HTMLElement | null>>([]);
 
   const imagesRef = useRef<Array<HTMLElement | null>>([]);
+  const [loaded, setLoaded] = useState(false);
   const agendaText = useRef<any>();
   const agendaContainer = useRef<any>();
   const currentRef = useRef<number | undefined>();
   const [page, setNextPage] = useState(0);
+  const [navBar, setNavbar] = useState(false);
   const [implodeText, setImplodeText] = useState(false);
   const [animate, setAnimate] = useState(false);
   const [chars, setChars] = useState<any[]>();
@@ -40,7 +43,6 @@ export default function Home() {
 
   gsap.registerPlugin(SplitText);
 
-  const [loaded, setLoaded] = useState(false);
   // const refImage1 = useRef<HTMLDivElement>(null);
 
   function checkImageLoaded() {
@@ -56,6 +58,23 @@ export default function Home() {
       if (img.complete) setLoaded(true);
     }
   }
+
+  // const changeNavBackground = () => {
+  //   console.log("test2");
+  //   console.log(window.scrollY);
+  //   if (window.scrollY >= 66) {
+  //     setNavbar(true);
+  //   } else {
+  //     setNavbar(false);
+  //   }
+  // };
+
+  // useIsomorphicLayoutEffect(() => {
+  //   window.addEventListener("scroll", changeNavBackground);
+  //   return () => {
+  //     window.removeEventListener("scroll", changeNavBackground);
+  //   };
+  // }, []);
 
   useIsomorphicLayoutEffect(() => {
     gsap.set(outerRef.current, { yPercent: 100 });
@@ -159,6 +178,21 @@ export default function Home() {
     setAnimate(false);
   }
 
+  // function animateLink() {
+  //   gsap.set("#link-wrapper", { autoAlpha: 1 });
+  //   let split = new SplitText("#schedule-link", { type: "chars" });
+  //   let animation = gsap.timeline({});
+  //   animation.from(split.chars, {
+  //     opacity: 0,
+  //     y: 50,
+  //     ease: "back(4)",
+  //     stagger: {
+  //       from: "end", //try "center" and "edges"
+  //       each: 0.05,
+  //     },
+  //   });
+  // }
+
   async function animateText() {
     // const ctx = gsap.context(() => {
 
@@ -216,42 +250,41 @@ export default function Home() {
     // return () => ctx.revert();
   }
 
-  function animateTextOut() {
-    gsap.set(sectionsRef.current[currentRef.current ?? 0], { zIndex: 1 });
-    gsap.set(sectionsRef.current[page], { autoAlpha: 1, zIndex: 0 });
-    // gsap.set(splitHeadings[next].chars, { autoAlpha: 0, yPercent: 100 });
-    gsap.set([outerRef.current[page], innerRef.current[page]], { yPercent: 0 });
-    gsap.set(imagesRef.current[page], { yPercent: 0 });
-    const tlDefaults = {
-      ease: "slow.inOut",
-      duration: 1.25,
-    };
-    gsap
-      .timeline({
-        defaults: tlDefaults,
-        onComplete: () => {
-          currentRef.current = page;
-        },
-      })
-      .to(outerRef.current[currentRef.current ?? 0], { yPercent: 100 }, 0)
-      .to(innerRef.current[currentRef.current ?? 0], { yPercent: -100 }, 0)
-      .to(imagesRef.current[currentRef.current ?? 0], { yPercent: 15 }, 0)
-      .from(imagesRef.current[page], { yPercent: -15 }, 0)
-      .set(imagesRef.current[currentRef.current ?? 0], { yPercent: 0 });
-  }
+  // function animateTextOut() {
+  //   gsap.set(sectionsRef.current[currentRef.current ?? 0], { zIndex: 1 });
+  //   gsap.set(sectionsRef.current[page], { autoAlpha: 1, zIndex: 0 });
+  //   // gsap.set(splitHeadings[next].chars, { autoAlpha: 0, yPercent: 100 });
+  //   gsap.set([outerRef.current[page], innerRef.current[page]], { yPercent: 0 });
+  //   gsap.set(imagesRef.current[page], { yPercent: 0 });
+  //   const tlDefaults = {
+  //     ease: "slow.inOut",
+  //     duration: 1.25,
+  //   };
+  //   gsap
+  //     .timeline({
+  //       defaults: tlDefaults,
+  //       onComplete: () => {
+  //         currentRef.current = page;
+  //       },
+  //     })
+  //     .to(outerRef.current[currentRef.current ?? 0], { yPercent: 100 }, 0)
+  //     .to(innerRef.current[currentRef.current ?? 0], { yPercent: -100 }, 0)
+  //     .to(imagesRef.current[currentRef.current ?? 0], { yPercent: 15 }, 0)
+  //     .from(imagesRef.current[page], { yPercent: -15 }, 0)
+  //     .set(imagesRef.current[currentRef.current ?? 0], { yPercent: 0 });
+  // }
 
   // useIsomorphicLayoutEffect(() => {
   //   const ctx = gsap.context(() => {
-  //     if (implodeText) {
-  //       animateText();
+  //     if (page === 0) {
+  //       animateLink();
   //     }
   //   });
-  //   // return => clearTimeout(timeid);
   //   return () => ctx.revert();
-  // }, [implodeText]);
+  // }, [animate]);
 
   const textOpacity = page === 1 && animate ? "opacity-0" : "opacity-100";
-
+  const navBarBg = navBar ? "" : "";
   return (
     <div className="flex flex-col overflow-x-hidden overflow-y-hidden">
       <Head>
@@ -274,16 +307,18 @@ export default function Home() {
           )}
           {page === 0 && !animate && loaded && (
             <div className="flex items-end justify-between">
-              {" "}
-              <FadeIn delay={1}>
+              {/* <div id="link-wrapper" ref={linkText}> */}
+              <FadeIn delay={0.7}>
                 <LinkElement
                   text="SCHEDULE"
+                  id="schedule-link"
                   cb={() => {
                     if (!animate) setNextPage(1);
                   }}
                 />
               </FadeIn>
-              <FadeIn delay={1}>
+              {/* </div> */}
+              <FadeIn delay={1.0}>
                 <Link
                   href="rumble"
                   className="mt-2 ml-8 text-lg underline cursor-pointer underline-offset-4 link-underline"
@@ -326,7 +361,7 @@ export default function Home() {
               {/* <div ref={(el) => (innerRef.current[0] = el)} className=""> */}
               <div
                 ref={(el) => (imagesRef.current[0] = el)}
-                className="absolute top-0 flex w-full h-full animate-blurIn"
+                className="absolute top-0 flex w-full h-full"
                 style={{
                   backgroundImage: 'url("/images/background1.png")',
                   height: "100%",
@@ -339,7 +374,9 @@ export default function Home() {
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "center center",
                 }}
-              ></div>
+              >
+                {/* <PinkLine /> */}
+              </div>
             </div>
           </div>
         </section>
@@ -373,7 +410,7 @@ export default function Home() {
                 {/* {implodeText && !animate && ( */}
                 <div
                   ref={agendaContainer}
-                  className={`grid max-w-screen-md grid-cols-1 mx-4 gap-x-2 xl:mx-auto lg:w-1/2 gap-y-1 ${textOpacity}`}
+                  className={`grid pb-24 max-w-screen-md grid-cols-1 mx-4 gap-x-2 xl:mx-auto lg:w-1/2 gap-y-1 ${textOpacity}`}
                 >
                   {/* {!animate && page === 1 && ( */}
                   <div className="mt-20 w-36 md:w-52">
@@ -383,21 +420,22 @@ export default function Home() {
                   </div>
                   {/* )} */}
                   <AgendaText size="lg" ref={agendaText}>
-                    <Text tagName="div"> 13:00 - 13:40</Text>
+                    <Text tagName="div">13:00 - 13:40</Text>
                   </AgendaText>
                   <AgendaText size="md" ref={agendaText}>
-                    <Text tagName="div"> Joint introduction</Text>
+                    <Text tagName="div">DevCon Opening</Text>
+                    <Text tagName="p">Andreas Nilsson & Niklas Karvonen</Text>
                   </AgendaText>
 
                   <AgendaText size="lg" ref={agendaText}>
-                    <Text tagName="div"> 14:00 - 14:40</Text>
+                    <Text tagName="div">14:00 - 14:40</Text>
                   </AgendaText>
 
                   <AgendaText size="md" ref={agendaText}>
                     <div>
                       <Text tagName="div">Let the type guide the way</Text>
                       <Text tagName="p">
-                        Peter Vikström, Robin Olsson, Tobias Åkeblom and Jimmie
+                        Peter Vikström, Robin Olsson, Tobias Åkeblom & Jimmie
                         Espling
                       </Text>
                     </div>
@@ -405,7 +443,7 @@ export default function Home() {
                     <div className="mt-6">
                       <Text tagName="div">
                         Design Guidelines från Apple, Google & Microsoft: How
-                        are they different?
+                        different are they?
                       </Text>
                       <Text tagName="p">Robert Stjärnström</Text>
                     </div>
@@ -422,6 +460,7 @@ export default function Home() {
 
                     <div className="mt-6">
                       <Text tagName="div">Teams Operator Connect</Text>
+                      <Text tagName="p">Patrik Sandlund</Text>
                     </div>
                   </AgendaText>
 
@@ -429,7 +468,7 @@ export default function Home() {
                     <Text tagName="div">14:40 - 15:00</Text>
                   </AgendaText>
                   <AgendaText size="md" ref={agendaText}>
-                    <Text tagName="div"> Coffe</Text>
+                    <Text tagName="div">Brain break</Text>
                   </AgendaText>
 
                   <AgendaText size="lg" ref={agendaText}>
@@ -441,7 +480,7 @@ export default function Home() {
                         Make it easy to be lazy - Reusable code
                       </Text>
                       <Text tagName="p">
-                        Peter Vikström, Robin Olsson, Tobias Åkeblom and Jimmie
+                        Peter Vikström, Robin Olsson, Tobias Åkeblom & Jimmie
                         Espling
                       </Text>
                     </div>
@@ -462,11 +501,12 @@ export default function Home() {
                       <Text tagName="div">
                         Cubicle Terminators - The Office Work Revolution
                       </Text>
-                      <Text tagName="p">Niklas Karvonen</Text>
+                      <Text tagName="p">Ellinor, Filip & Linus</Text>
                     </div>
 
                     <div className="mt-6">
                       <Text tagName="div">Tune in to Intune Session</Text>
+                      <Text tagName="p">Cloudspin workshop</Text>
                     </div>
                   </AgendaText>
 
@@ -474,17 +514,19 @@ export default function Home() {
                     <Text tagName="div"> 16:10 - 18:00</Text>
                   </AgendaText>
                   <AgendaText size="md" ref={agendaText}>
-                    <Text tagName="div">Team rumble</Text>
+                    <Link href="rumble">
+                      <Text tagName="div">Team rumble</Text>
+                    </Link>
                   </AgendaText>
 
                   <AgendaText size="lg" ref={agendaText}>
                     <Text tagName="div">18:00 - 22:00</Text>
                   </AgendaText>
                   <AgendaText size="md" ref={agendaText}>
-                    <Text tagName="div">AW and Food</Text>
+                    <Text tagName="div">AW & Food</Text>
                   </AgendaText>
                 </div>
-
+                {/* <PinkLine /> */}
                 {/* )} */}
                 {/* {implodeText && (
                   <div className="pt-8 mt-auto mb-20 sm:mb-4">
