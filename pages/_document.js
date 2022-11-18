@@ -11,7 +11,7 @@ export default class MyDocument extends Document {
           <meta property="og:description" content="Spin Growth Devcon 2022" />
           <meta
             property="og:image"
-            content="https://devcon2022.vercel.app/images/OG_IMAGE.png"
+            content="https://devcon2022.vercel.app/images/OG_Image.png"
           />
         </Head>
         <body>
