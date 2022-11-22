@@ -1,13 +1,11 @@
 import Head from "next/head";
 import { gsap } from "gsap";
-// import Image from "next/image";
+import Image from "next/image";
 
 import { SplitText } from "@/lib/SplitText";
 
 import useIsomorphicLayoutEffect from "@/hooks/useIsomorphicLayoutEffect";
 import { useEffect, useRef, useState } from "react";
-// import Logo from "@/components/Logo/Logo";
-// import CompanyNames from "@/components/Logo/CompanyNames";
 import Logos from "@/components/Logo/Logos";
 import Agenda from "@/components/Logo/Agenda";
 import FadeIn from "@/components/Animation/FadeIn";
@@ -20,6 +18,7 @@ import DevconLogo from "@/components/Logo/DevconLogo";
 import PinkLine from "@/components/PinkLine/PinkLine";
 // import bg1 from "../public/images/background1.png";
 // import bg2 from "../public/images/background2.png";
+import peekaboImage from "../public/images/doggie-peekaboo.png";
 
 export default function Home() {
   const sectionsRef = useRef<Array<HTMLElement | null>>([]);
@@ -27,6 +26,8 @@ export default function Home() {
   const innerRef = useRef<Array<HTMLElement | null>>([]);
 
   const imagesRef = useRef<Array<HTMLElement | null>>([]);
+  const peekaBoimagesRef = useRef<HTMLElement | null>(null);
+
   const [loaded, setLoaded] = useState(false);
   const agendaText = useRef<any>();
   const agendaContainer = useRef<any>();
@@ -36,6 +37,7 @@ export default function Home() {
   const [implodeText, setImplodeText] = useState(false);
   const [animate, setAnimate] = useState(false);
   const [chars, setChars] = useState<any[]>();
+  const [peekabo, setPeekabo] = useState<boolean>(false);
   const tlDefaults = {
     ease: "slow.inOut",
     duration: 0.5,
@@ -93,6 +95,20 @@ export default function Home() {
       slideDown();
     }
   }, [page, loaded]);
+
+  useIsomorphicLayoutEffect(() => {
+    if (page === 1) {
+      setPeekabo(false);
+      return;
+    }
+    const start = peekabo ? 3000 : 12000;
+    var rand = Math.round(Math.random() * start) + 2000;
+    const timeout = setTimeout(() => {
+      setPeekabo((value) => !value);
+    }, rand);
+
+    return () => clearTimeout(timeout);
+  }, [peekabo, page]);
 
   function slideDown() {
     setAnimate(true);
@@ -375,8 +391,25 @@ export default function Home() {
                   backgroundPosition: "center center",
                 }}
               >
-                {/* <PinkLine /> */}
+                {/* <PinkLine /> 
+                transform duration-500
+                 -bottom-full
+                */}
               </div>
+              <div
+                style={{
+                  backgroundImage: 'url("/images/doggie-peekaboo.png")',
+                  height: "300px",
+                  width: "300px",
+                  zIndex: "10",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center center",
+                }}
+                className={`fixed right-7 transform duration-700 ${
+                  peekabo ? "bottom-0" : "-bottom-full"
+                }`}
+              />
             </div>
           </div>
         </section>
@@ -435,7 +468,7 @@ export default function Home() {
                     <div>
                       <Text tagName="div">Let the type guide the way</Text>
                       <Text tagName="p">
-                        Peter Vikström, Robin Olsson, Tobias Åkeblom & Jimmie
+                        Peter Wikström, Robin Olsson, Tobias Åkeblom & Jimmie
                         Espling
                       </Text>
                     </div>
@@ -455,7 +488,9 @@ export default function Home() {
                       <Text tagName="div">
                         Master or Servant - Piecing together the Singularity
                       </Text>
-                      <Text tagName="p">Niklas Karvonen</Text>
+                      <Text tagName="p">
+                        Ewa Tusien, Emanuel Johansson, Filip Drmac
+                      </Text>
                     </div>
 
                     <div className="mt-6">
@@ -480,7 +515,7 @@ export default function Home() {
                         Make it easy to be lazy - Reusable code
                       </Text>
                       <Text tagName="p">
-                        Peter Vikström, Robin Olsson, Tobias Åkeblom & Jimmie
+                        Peter Wikström, Robin Olsson, Tobias Åkeblom & Jimmie
                         Espling
                       </Text>
                     </div>
