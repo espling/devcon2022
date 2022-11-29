@@ -1,0 +1,1401 @@
+{
+  "teams": [
+    {
+      "name": "Team 1N",
+      "location": "North",
+      "members": [
+        "Axel Vestin",
+        "Emma Liljedal",
+        "Erik Lundstsröm",
+        "Johan Rudström",
+        "Mattias Wallenberg",
+        "Peter Näppä",
+        "Pierre Johansson",
+        "Arnold Koppling",
+        "Johanna Bodin",
+        "Jan Isaksson",
+        "Josef Vilestad"
+      ],
+      "points": 2,
+      "tasks": [
+        {
+          "id": 1,
+          "points": 1,
+          "completed": true
+        },
+        {
+       "id": 2,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 3,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 4,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 5,
+          "points": 0,
+          "completed": false
+        },
+{
+       "id": 6,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 7,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 8,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 9,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 10,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 11,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 12,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 13,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 14,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 15,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 16,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 17,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 18,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 19,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 20,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 21,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 22,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 23,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 24,
+          "points": 0,
+          "completed": false
+        }
+      ]
+    },
+    {
+      "name": "Team 2N",
+      "location": "North",
+      "members": [
+        "Anders Askenryd",
+        "Chrisian Ejneborn",
+        "Erik Rehnmark",
+        "Jonas Niemi",
+        "Mattias Aidenpää",
+        "Sam Karimi",
+        "Robert Stjärnström",
+        "Emanuel Johansson",
+        "Karin Sjöö Åkeblom",
+        "Peter Nilsson",
+        "Oskar Karlsson"
+      ],
+      "points": 2,
+       "tasks": [
+        {
+          "id": 1,
+          "points": 1,
+          "completed": true
+        },
+        {
+       "id": 2,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 3,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 4,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 5,
+          "points": 0,
+          "completed": false
+        },
+{
+       "id": 6,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 7,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 8,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 9,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 10,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 11,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 12,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 13,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 14,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 15,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 16,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 17,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 18,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 19,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 20,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 21,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 22,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 23,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 24,
+          "points": 0,
+          "completed": false
+        }
+      ]
+    },
+    {
+      "name": "Team 3N",
+      "location": "North",
+      "members": [
+        "Adam Kandel",
+        "Andreas Lalloo",
+        "Christofer Bodin",
+        "Jonathan Bergstedt",
+        "Nicklas Gavelin",
+        "Sofie Nilsson",
+        "Linus Engman",
+        "Anna Johansson",
+        "Linda Lundmark",
+        "Tommy Jakobsson",
+        "Roman Ermolaev"
+      ],
+      "points": 2,
+      "tasks": [
+        {
+          "id": 1,
+          "points": 1,
+          "completed": true
+        },
+        {
+       "id": 2,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 3,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 4,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 5,
+          "points": 0,
+          "completed": false
+        },
+{
+       "id": 6,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 7,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 8,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 9,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 10,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 11,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 12,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 13,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 14,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 15,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 16,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 17,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 18,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 19,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 20,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 21,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 22,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 23,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 24,
+          "points": 0,
+          "completed": false
+        }
+      ]
+    },
+    {
+      "name": "Team 4N",
+      "location": "North",
+      "members": [
+        "Andreas Wall",
+        "Christofer Kihlman",
+        "Fredrik Dahlberg",
+        "Mariza Norberg",
+        "Nils Elveros",
+        "Örjan Olsson",
+        "Anders Rönnbäck",
+        "Anna Stenberg",
+        "Peter Näslund",
+        "Alex Peschel"
+      ],
+      "points": 2,
+     "tasks": [
+        {
+          "id": 1,
+          "points": 1,
+          "completed": true
+        },
+        {
+       "id": 2,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 3,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 4,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 5,
+          "points": 0,
+          "completed": false
+        },
+{
+       "id": 6,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 7,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 8,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 9,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 10,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 11,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 12,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 13,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 14,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 15,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 16,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 17,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 18,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 19,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 20,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 21,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 22,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 23,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 24,
+          "points": 0,
+          "completed": false
+        }
+      ]
+    },
+     {
+      "name": "Team 5N",
+      "location": "North",
+      "members": [
+       "Anton Olason",
+        "Daniel Lodnert",
+        "Fredrik Stöckel",
+        "Mattias Isaksson",
+        "Patrik Hedlund",
+        "Peter Eklöf",
+        "Cecilia Sjöberg",
+        "Åsa Gustafsson",
+        "Daniel Rosdahl",
+        "Emma Carlsson"
+      ],
+      "points": 2,
+      "tasks": [
+        {
+          "id": 1,
+          "points": 1,
+          "completed": true
+        },
+        {
+       "id": 2,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 3,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 4,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 5,
+          "points": 0,
+          "completed": false
+        },
+{
+       "id": 6,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 7,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 8,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 9,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 10,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 11,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 12,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 13,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 14,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 15,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 16,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 17,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 18,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 19,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 20,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 21,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 22,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 23,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 24,
+          "points": 0,
+          "completed": false
+        }
+      ]
+    },
+     {
+      "name": "Team 1S",
+      "location": "South",
+      "members": [
+       "Elin Strandberg",
+        "Göran Larsson",
+        "Jimmy Löf",
+        "Matilda Brzezinska",
+        "Senan Stenhav",
+        "Frida Haugland-Øye",
+        "Filip Drmac",
+        "Sergio Liverman",
+        "Mikael Lundbeck"
+      ],
+      "points": 2,
+      "tasks": [
+        {
+          "id": 1,
+          "points": 1,
+          "completed": true
+        },
+        {
+       "id": 2,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 3,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 4,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 5,
+          "points": 0,
+          "completed": false
+        },
+{
+       "id": 6,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 7,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 8,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 9,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 10,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 11,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 12,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 13,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 14,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 15,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 16,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 17,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 18,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 19,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 20,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 21,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 22,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 23,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 24,
+          "points": 0,
+          "completed": false
+        }
+      ]
+    },
+     {
+      "name": "Team 2S",
+      "location": "South",
+      "members": [
+     "Anton Ebeling",
+        "Hans-Erik Eriksson",
+        "Isabelle Caspersson",
+        "Oscar Olsson",
+        "Svante Jonsson Roos",
+        "Hugo Wittorf",
+        "Ewa Tusien",
+        "Reynaldo Boulogne",
+        "Niklas Sörengård"
+      ],
+      "points": 2,
+      "tasks": [
+        {
+          "id": 1,
+          "points": 1,
+          "completed": true
+        },
+        {
+       "id": 2,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 3,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 4,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 5,
+          "points": 0,
+          "completed": false
+        },
+{
+       "id": 6,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 7,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 8,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 9,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 10,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 11,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 12,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 13,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 14,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 15,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 16,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 17,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 18,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 19,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 20,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 21,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 22,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 23,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 24,
+          "points": 0,
+          "completed": false
+        }
+      ]
+    },
+     {
+      "name": "Team 3S",
+      "location": "South",
+      "members": [
+    "Adam Eriksson",
+        "Johan Hansson",
+        "Kelsie Enqvist",
+        "Saboor Ashfaq",
+        "Leonard Gustafson",
+        "Elena Sulea",
+        "Gowthami Kuttapalayam-Mothilal",
+        "Dennis Salomonsson",
+        "Nils Hagström"
+      ],
+      "points": 2,
+      "tasks": [
+        {
+          "id": 1,
+          "points": 1,
+          "completed": true
+        },
+        {
+       "id": 2,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 3,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 4,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 5,
+          "points": 0,
+          "completed": false
+        },
+{
+       "id": 6,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 7,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 8,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 9,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 10,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 11,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 12,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 13,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 14,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 15,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 16,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 17,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 18,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 19,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 20,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 21,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 22,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 23,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 24,
+          "points": 0,
+          "completed": false
+        }
+      ]
+    },
+     {
+      "name": "Team 4S",
+      "location": "South",
+      "members": [
+   "Ernes Filipovic",
+        "Jakob Nyhlin",
+        "Lina Wålegård",
+        "Samuel Wilhelmsson",
+        "Ellinor Widman",
+        "Filiph Wallsten",
+        "Gunasundari Govindaraj",
+        "Jonna Hillblom"
+      ],
+      "points": 2,
+      "tasks": [
+        {
+          "id": 1,
+          "points": 1,
+          "completed": true
+        },
+        {
+       "id": 2,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 3,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 4,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 5,
+          "points": 0,
+          "completed": false
+        },
+{
+       "id": 6,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 7,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 8,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 9,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 10,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 11,
+          "points": 0,
+          "completed": false
+        },
+        {
+       "id": 12,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 13,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 14,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 15,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 16,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 17,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 18,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 19,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 20,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 21,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 22,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 23,
+          "points": 0,
+          "completed": false
+        },
+         {
+       "id": 24,
+          "points": 0,
+          "completed": false
+        }
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "title": "In https://scratch.mit.edu/ create a visual program where apes counts bananas and when the ape has counted 10 banans the ape goes bananas and throws all bananas in a boats and sails away. 5 extra points if a manager has contrubuted to the logic. (in a good way)",
+      "points": "5-15",
+      "description": ""
+    },
+
+    {
+      "id": 2,
+      "title": "Treasur hunt! Find 20 pencils, one nokia phone, a selfie with a musican, a connection to Peter Forsberg (Hockey player) through one of our employees, a mechanic keyboard, a program written in brainfuck that says Hello DevCon! (must execute), blue post-its, a sister that says 'Go devcon!' and finally a christmas sock with a christmasgift to someone that has done a great job this year!",
+      "points": "0-20",
+      "description": ""
+    },
+
+      {
+      "id": 3,
+      "title": "Win 10 games of rock, paper, scissors against members of opposing teams",
+      "points": "0-10",
+      "description": ""
+    },
+      {
+      "id": 4,
+      "title": "Chrome Dino high score",
+      "points": "0-10",
+      "description": "chrome://dino - 1 point for each 1000 score (so score 2100, get 2 points for the team, if we want to be nice we round up, so 2500 score = 3 points). Verify with screenshot "
+    },
+      {
+      "id": 5,
+      "title": "Find a bug in a system we have put in production and present a bugfix. Do not deploy!",
+      "points": "5-10",
+      "description": ""
+    },
+      {
+      "id": 6,
+      "title": "Find a extreemly long crazy commit message written by a colleague",
+      "points": "5",
+      "description": ""
+    },
+      {
+      "id": 7,
+      "title": "Create a program that draws a ascii winter landscape with trees, houses and stars, all in color. It should be possible to change colors and size of the landscape via parameters. Go crazy!",
+      "points": "5-15",
+      "description": ""
+    },
+      {
+      "id": 8,
+      "title": "Write a program that via facial recognition can identify and name 50% of your team. Bonus: real-time recognition with video.",
+      "points": "5+10",
+      "description": ""
+    },
+      {
+      "id": 9,
+      "title": "Create your own crypto-coin. Bonus: design a logo for the coin. Bonus 2: Give the coin a funny name. Bonus 3: Sell a coin to someone not in your team. Team that sells their coin for the most money gets the bonus points.",
+      "points": "5 + 5 + 5 + 20",
+      "description": "Selling a coin can be done in any currency. The only requirement is that there is a record of purchase, and a recorded transfer to a member from an opposing team. Only one team can win the bonus."
+    },
+      {
+      "id": 10,
+      "title": "Find a extremly counter-intuitive UI",
+      "points": "5",
+      "description": ""
+    },
+
+    {
+      "id": 11,
+      "title": "Redesign a site/app by choice. Make it awesome!",
+      "points": "5-10",
+      "description": ""
+    },
+     {
+      "id": 12,
+      "title": "Make a brand design for your team. Present core values and a cheesy slogan.",
+      "points": "5",
+      "description": ""
+    },
+     {
+      "id": 13,
+      "title": "Find 5-15 logos with double meanings, or that can be interpreted in multiple ways.",
+      "points": "5-15",
+      "description": "Example: https://www.boredpanda.com/worst-logo-fails-ever/?utm_source=google&utm_medium=organic&utm_campaign=organic"
+    }, {
+      "id": 14,
+      "title": "Get a person from another team, and create a persona based on them",
+      "points": "5-15",
+      "description": "Template: https://dribbble.com/shots/4152326--Free-Template-User-Persona-Black-White"
+    },
+     {
+      "id": 15,
+      "title": "Create a funny meme using an original picture from one of the team members phones. Bonus 1: Make it an animated gif. Bonus 2: mint it as an NFT. Bonus 3: Sell the NFT to a member of an opposing team. Epic bonus: Sell the NFT to a board member of Spin Growth",
+      "points": "5 + 5 + 5 + 20",
+      "description": "IE: not a screenshot or a saved meme, it has to be a picture taken by the owner, or a picture taken by someone using the owners phone. Same rules as for the coin applies for selling NFT. Closing the Nilsson loophole: Board member can't be at, or a part of DevCon 2022"
+    },
+     {
+      "id": 16,
+      "title": "Draw a flowchart of a typical friday. From morning to night.",
+      "points": "5",
+      "description": ""
+    },
+     {
+      "id": 17,
+      "title": "Create a battle excel sheet for your team! The sheet must contain, timereports, burndown, all battles, progress, deadline, fancy colours, formulas and a plan for how many points you need to win the battle. ",
+      "points": "5-15",
+      "description": ""
+    },
+     {
+      "id": 18,
+      "title": "Write a draft of an email to a very angry client, explaining why the project is late and over budget, without throwing your team under the bus",
+      "points": "5-15",
+      "description": "Higher scores for funny (but not rude) email. Higher score for creativity in why the project is late and over budget."
+    },
+     {
+      "id": 19,
+      "title": "Create an anti-agile PM process. The most complicated way of working. Bonus points for the worst, consulting-firm-sounding brand-name for the process.",
+      "points": "5+15",
+      "description": ""
+    },
+     {
+      "id": 20,
+      "title": "Show the movie Rashomon on netflix.",
+      "points": "5",
+      "description": ""
+    },
+     {
+      "id": 21,
+      "title": "Create a powershell script that counts all mails in the inbox of tech@tromb.com",
+      "points": "10",
+      "description": ""
+    },
+     {
+      "id": 22,
+      "title": "Create a typical sales-person tech kit, and price it out",
+      "points": "5-15",
+      "description": "Flashy is good, pricey is good. Ridicilus wins"
+    },
+     {
+      "id": 23,
+      "title": "Find the oldest, still in use device at Spin Growth. North or South",
+      "points": "5",
+      "description": ""
+    },
+     {
+      "id": 24,
+      "title": "Explain why the cloud is the future of computing, using as many buzzwords and abbreviations as possible, using one powerpoint slide.",
+      "points": "5-15",
+      "description": ""
+    }
+  ]
+}

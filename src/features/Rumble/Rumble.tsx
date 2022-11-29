@@ -8,9 +8,9 @@ import { gsap } from "gsap";
 
 import { SplitText } from "@/lib/SplitText";
 import { useRef } from "react";
-import FadeIn from "../Animation/FadeIn";
+import FadeIn from "../../components/Animation/FadeIn";
 import Link from "next/link";
-import PinkLine from "../PinkLine/PinkLine";
+import PinkLine from "../../components/PinkLine/PinkLine";
 
 export const Rumble: NextPage = () => {
   const text = useRef<HTMLDivElement>();

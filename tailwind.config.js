@@ -22,9 +22,18 @@ module.exports = {
       letterSpacing: {
         widest: ".25em",
       },
+      gridTemplateColumns: {
+        // Simple 16 column grid
+        16: "repeat(16, minmax(0, 1fr))",
+
+        // Complex site-specific column configuration
+        footer: "200px minmax(900px, 1fr) 100px",
+      },
+
       animation: {
         pulse2: "pulse 0.8s cubic-bezier(0.4, 0, 0.6, 1) infinite",
         blurIn: "blurInImage 500s ease-in-out",
+        "fade-in": "fade-in 0.4s ease-in",
       },
       keyframes: {
         pulse2: {
@@ -35,6 +44,14 @@ module.exports = {
         blurInImage: {
           "0%": { filter: "blur(0)" },
           "100%": { filter: "blur(18px)" },
+        },
+        "fade-in": {
+          "0%": {
+            opacity: "0",
+          },
+          "100%": {
+            opacity: "1",
+          },
         },
       },
     },

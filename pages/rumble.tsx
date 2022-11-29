@@ -1,1 +1,1 @@
-export { Rumble as default } from "@/components/Rumble/Rumble";
+export { Rumble as default } from "@/features/Rumble/Rumble";

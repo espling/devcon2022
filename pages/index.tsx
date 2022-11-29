@@ -431,27 +431,19 @@ export default function Home() {
                 className="absolute top-0 flex flex-col items-center justify-center w-full min-h-full mb-20 xl:justify-start"
                 style={{
                   backgroundImage: 'url("/images/background2.jpg")',
-                  // filter: "blur(18px)",
-                  // zIndex: "-1",
-                  // backdropFilter: "blur(18px)",
-                  // backgroundPosition: "center top",
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
-                  // backgroundPosition: "center center",
                 }}
               >
-                {/* {implodeText && !animate && ( */}
                 <div
                   ref={agendaContainer}
                   className={`grid pb-24 max-w-screen-md grid-cols-1 mx-4 gap-x-2 xl:mx-auto lg:w-1/2 gap-y-1 ${textOpacity}`}
                 >
-                  {/* {!animate && page === 1 && ( */}
                   <div className="mt-20 w-36 md:w-52">
                     <FadeIn delay={0.6}>
                       <Agenda />
                     </FadeIn>
                   </div>
-                  {/* )} */}
                   <AgendaText size="lg" ref={agendaText}>
                     <Text tagName="div">13:00 - 13:40</Text>
                   </AgendaText>
@@ -475,7 +467,7 @@ export default function Home() {
 
                     <div className="mt-6">
                       <Text tagName="div">
-                        Design Guidelines från Apple, Google & Microsoft: How
+                        Design Guidelines from Apple, Google & Microsoft: How
                         different are they?
                       </Text>
                       <Text tagName="p">Robert Stjärnström</Text>
@@ -486,11 +478,19 @@ export default function Home() {
                     </div>
                     <div className="mt-6">
                       <Text tagName="div">
-                        Master or Servant - Piecing together the Singularity
+                        ML/BI/Data news and trends, 8 minutes each.
                       </Text>
                       <Text tagName="p">
-                        Ewa Tusien, Emanuel Johansson, Filip Drmac
+                        Generative Models (Emanuel Johansson)
                       </Text>
+                      <Text tagName="p">NLP (Ewa Tusien)</Text>
+                      <Text tagName="p">
+                        Data democratization (Joycelyn Gustavsson)
+                      </Text>
+                      <Text tagName="p">
+                        BI (Gowthami Kuttapalayam Mothilal)
+                      </Text>
+                      <Text tagName="p">Regulations (Filip Drmac)</Text>
                     </div>
 
                     <div className="mt-6">
@@ -534,9 +534,12 @@ export default function Home() {
                     </div>
                     <div className="mt-6">
                       <Text tagName="div">
-                        Cubicle Terminators - The Office Work Revolution
+                        RPA news and trends, 8 minutes each:
                       </Text>
-                      <Text tagName="p">Ellinor, Filip & Linus</Text>
+                      <Text tagName="p">UI Path (Linus Engman)</Text>
+                      <Text tagName="p">Blueprism (Dmitrij Mamajev)</Text>
+                      <Text tagName="p">Power Automate (Filip Drmac)</Text>
+                      <Text tagName="p">Open source (Ellinor Widman)</Text>
                     </div>
 
                     <div className="mt-6">
