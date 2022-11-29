@@ -101,7 +101,7 @@ export default function Home() {
       setPeekabo(false);
       return;
     }
-    const start = peekabo ? 3000 : 12000;
+    const start = peekabo ? 2000 : 2500;
     var rand = Math.round(Math.random() * start) + 2000;
     const timeout = setTimeout(() => {
       setPeekabo((value) => !value);
@@ -109,6 +109,9 @@ export default function Home() {
 
     return () => clearTimeout(timeout);
   }, [peekabo, page]);
+
+  const randomPeekabo = Math.floor(Math.random() * 100);
+  console.log(randomPeekabo);
 
   function slideDown() {
     setAnimate(true);
@@ -405,6 +408,7 @@ export default function Home() {
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
                   backgroundPosition: "center center",
+                  // right: `${randomPeekabo ?? 20}px`,
                 }}
                 className={`fixed right-7 transform duration-700 ${
                   peekabo ? "bottom-0" : "-bottom-full"
