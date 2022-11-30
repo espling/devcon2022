@@ -1,12 +1,10 @@
 import Head from "next/head";
 import { gsap } from "gsap";
-import Image from "next/image";
-
 import { SplitText } from "@/lib/SplitText";
 
 import useIsomorphicLayoutEffect from "@/hooks/useIsomorphicLayoutEffect";
-import { useEffect, useRef, useState } from "react";
-import Logos from "@/components/Logo/Logos";
+import { useRef, useState } from "react";
+
 import Agenda from "@/components/Logo/Agenda";
 import FadeIn from "@/components/Animation/FadeIn";
 import AgendaText from "@/components/AgendaText/AgendaText";
@@ -15,10 +13,7 @@ import LinkElement from "@/components/Link/LinkElement";
 import { randomNumber } from "@/lib/randomNumber";
 import Link from "next/link";
 import DevconLogo from "@/components/Logo/DevconLogo";
-import PinkLine from "@/components/PinkLine/PinkLine";
-// import bg1 from "../public/images/background1.png";
-// import bg2 from "../public/images/background2.png";
-import peekaboImage from "../public/images/doggie-peekaboo.png";
+import Peekaboo from "@/components/Peekaboo/Peekaboo";
 
 export default function Home() {
   const sectionsRef = useRef<Array<HTMLElement | null>>([]);
@@ -26,26 +21,21 @@ export default function Home() {
   const innerRef = useRef<Array<HTMLElement | null>>([]);
 
   const imagesRef = useRef<Array<HTMLElement | null>>([]);
-  const peekaBoimagesRef = useRef<HTMLElement | null>(null);
 
   const [loaded, setLoaded] = useState(false);
   const agendaText = useRef<any>();
   const agendaContainer = useRef<any>();
   const currentRef = useRef<number | undefined>();
   const [page, setNextPage] = useState(0);
-  const [navBar, setNavbar] = useState(false);
   const [implodeText, setImplodeText] = useState(false);
   const [animate, setAnimate] = useState(false);
   const [chars, setChars] = useState<any[]>();
-  const [peekabo, setPeekabo] = useState<boolean | null>(false);
   const tlDefaults = {
     ease: "slow.inOut",
     duration: 0.5,
   };
 
   gsap.registerPlugin(SplitText);
-
-  // const refImage1 = useRef<HTMLDivElement>(null);
 
   function checkImageLoaded() {
     const src = imagesRef.current[0]?.style.backgroundImage;
@@ -95,23 +85,6 @@ export default function Home() {
       slideDown();
     }
   }, [page, loaded]);
-
-  useIsomorphicLayoutEffect(() => {
-    if (page === 1) {
-      setPeekabo(false);
-      return;
-    }
-    const start = peekabo ? 2000 : 2500;
-    var rand = Math.round(Math.random() * start) + 2000;
-    const timeout = setTimeout(() => {
-      setPeekabo((value) => !value);
-    }, rand);
-
-    return () => clearTimeout(timeout);
-  }, [peekabo, page]);
-
-  const randomPeekabo = Math.floor(Math.random() * 100);
-  const peekaboRight = `${randomPeekabo ?? 20}px`;
 
   function slideDown() {
     setAnimate(true);
@@ -399,24 +372,7 @@ export default function Home() {
                  -bottom-full
                 */}
               </div>
-              {peekabo !== null && (
-                <div
-                  style={{
-                    backgroundImage: 'url("/images/doggie-peekaboo.png")',
-                    height: "300px",
-                    width: "300px",
-                    zIndex: "10",
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center center",
-                    right: peekaboRight ?? "100px",
-                    // right: "100px",
-                  }}
-                  className={`fixed transform duration-700 ${
-                    peekabo ? "bottom-0" : "-bottom-full"
-                  }`}
-                />
-              )}
+              {page === 0 && <Peekaboo />}
             </div>
           </div>
         </section>

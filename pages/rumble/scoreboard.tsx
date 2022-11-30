@@ -16,6 +16,7 @@ import PinkPulse from "@/components/PinkLine/PinkPulse";
 import { ParsedUrlQuery } from "querystring";
 import api from "@/lib/cache";
 import { TeamSmall } from "@/types/types";
+import Peekaboo from "@/components/Peekaboo/Peekaboo";
 
 export interface IParams extends ParsedUrlQuery {
   slug: string;
@@ -84,6 +85,7 @@ export const Scoreboard: NextPage<Props> = ({ teams }: Props) => {
             placeholder="blur"
             quality={100}
           />
+          <Peekaboo />
         </div>
 
         <div className="z-50 flex flex-col items-center content-center justify-center w-full h-full py-20 m-auto md:w-2/3">
