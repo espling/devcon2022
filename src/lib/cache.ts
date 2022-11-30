@@ -29,17 +29,28 @@ const api = {
         return list["tasks"];
     },
     cache: {
+        // get: async (): Promise<string | null | undefined> => {
+        //     try {
+        //         const data = await fs.readFileSync(path.join(process.cwd(), 'teams.db'));
+        //         const teamsData: Teams = JSON.parse(data as unknown as string);
+        //         list = teamsData;
+        //         return JSON.stringify(teamsData);
+        //     }
+        //     catch {
+        //         return 'json error';
+        //     }
+
+        // },
         get: async (): Promise<string | null | undefined> => {
             try {
-                const data = await fs.readFileSync(path.join(process.cwd(), 'teams.db'));
-                const teamsData: Teams = JSON.parse(data as unknown as string);
-                list = teamsData;
-                return JSON.stringify(teamsData);
+                const data = await fetch('https://espling.z22.web.core.windows.net/teams.json');
+                const json = await data.json();
+                list = json;
+                return JSON.stringify(json);
             }
             catch {
-                return 'json error';
+                'json error'
             }
-
         },
         set: async (json: string) => {
             fs.writeFileSync(

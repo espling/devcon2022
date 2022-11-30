@@ -37,7 +37,7 @@ export default function Home() {
   const [implodeText, setImplodeText] = useState(false);
   const [animate, setAnimate] = useState(false);
   const [chars, setChars] = useState<any[]>();
-  const [peekabo, setPeekabo] = useState<boolean>(false);
+  const [peekabo, setPeekabo] = useState<boolean | null>(false);
   const tlDefaults = {
     ease: "slow.inOut",
     duration: 0.5,
@@ -111,7 +111,7 @@ export default function Home() {
   }, [peekabo, page]);
 
   const randomPeekabo = Math.floor(Math.random() * 100);
-  console.log(randomPeekabo);
+  const peekaboRight = `${randomPeekabo ?? 20}px`;
 
   function slideDown() {
     setAnimate(true);
@@ -303,7 +303,7 @@ export default function Home() {
   // }, [animate]);
 
   const textOpacity = page === 1 && animate ? "opacity-0" : "opacity-100";
-  const navBarBg = navBar ? "" : "";
+  // const navBarBg = navBar ? "" : "";
   return (
     <div className="flex flex-col overflow-x-hidden overflow-y-hidden">
       <Head>
@@ -399,21 +399,24 @@ export default function Home() {
                  -bottom-full
                 */}
               </div>
-              <div
-                style={{
-                  backgroundImage: 'url("/images/doggie-peekaboo.png")',
-                  height: "300px",
-                  width: "300px",
-                  zIndex: "10",
-                  backgroundSize: "cover",
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center center",
-                  // right: `${randomPeekabo ?? 20}px`,
-                }}
-                className={`fixed right-7 transform duration-700 ${
-                  peekabo ? "bottom-0" : "-bottom-full"
-                }`}
-              />
+              {peekabo !== null && (
+                <div
+                  style={{
+                    backgroundImage: 'url("/images/doggie-peekaboo.png")',
+                    height: "300px",
+                    width: "300px",
+                    zIndex: "10",
+                    backgroundSize: "cover",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center center",
+                    right: peekaboRight ?? "100px",
+                    // right: "100px",
+                  }}
+                  className={`fixed transform duration-700 ${
+                    peekabo ? "bottom-0" : "-bottom-full"
+                  }`}
+                />
+              )}
             </div>
           </div>
         </section>
