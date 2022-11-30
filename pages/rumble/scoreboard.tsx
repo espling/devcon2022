@@ -152,6 +152,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
     await api.cache.get();
     const teamCache: TeamSmall[] = await api.list();
 
+    teamCache.sort((a, b) => (a.points < b.points ? 1 : -1));
+
     return { props: { teams: teamCache ?? [] } };
   } catch (error) {
     console.log("error ", error);
