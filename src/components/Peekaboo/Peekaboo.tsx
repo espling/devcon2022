@@ -4,10 +4,10 @@ import { useState } from "react";
 const Peekaboo: React.FC = () => {
   const [peekabo, setPeekabo] = useState<boolean | null>(false);
   const [right, setRight] = useState<{ right: string }>({
-    right: "1.75rem;",
+    right: "1.75rem",
   });
   useIsomorphicLayoutEffect(() => {
-    const start = peekabo ? 2000 : 2500;
+    const start = peekabo ? 2500 : 3000;
     var rand = Math.round(Math.random() * start) + 2000;
     const randomPeekabo = Math.floor(Math.random() * 10);
 

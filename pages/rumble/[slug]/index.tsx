@@ -65,7 +65,15 @@ export const TeamPage: NextPage<Props> = ({ team, tasks }: Props) => {
       <header className="fixed z-50 flex items-center justify-between h-2 p-4">
         <FadeIn delay={1}>
           <Link
-            href="/rumble/teams"
+            href="/"
+            className="mt-2 mr-4 text-lg underline cursor-pointer underline-offset-4 link-underline"
+          >
+            home
+          </Link>
+        </FadeIn>
+        <FadeIn delay={1}>
+          <Link
+            href="/rumble"
             className="mt-2 mr-4 text-lg underline cursor-pointer underline-offset-4 link-underline"
           >
             teams
@@ -102,7 +110,7 @@ export const TeamPage: NextPage<Props> = ({ team, tasks }: Props) => {
           />
         </div>
         <div className="flex flex-col items-center content-center justify-start h-full py-20 mx-8 md:m-auto md:w-2/3 ">
-          <div className="z-50 ">
+          <div className="z-40 ">
             <div
               id="split-text"
               className="mt-20 mb-20 text-2xl uppercase md:text-4xl font-joystix"

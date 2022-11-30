@@ -1,3 +1,4 @@
+import { getTotalCompleted } from "@/lib/getTotalCompleted";
 import { Tasks, Team } from "@/types/types";
 import Link from "next/link";
 import React from "react";
@@ -8,10 +9,6 @@ type Props = {
 };
 
 export const TeamTable: React.FC<Props> = ({ teams, location }) => {
-  const getTotalCompleted = (tasks: Tasks[]) => {
-    return tasks.filter((t) => t.completed).length;
-  };
-
   return (
     <>
       {teams &&

@@ -1,10 +1,10 @@
 import clsx from "clsx";
 
 type Props = {
-  size: GlobalTypeHelper<"xs" | "sm">;
+  size: MyTypeHelper<"xs" | "sm">;
 };
 
-type GlobalTypeHelper<T extends string> = T | Omit<string, T>;
+type MyTypeHelper<T extends string> = T | Omit<string, T>;
 
 export const MyButton: React.FC<Props> = ({ size }) => {
   return <button type={"button"} className={clsx("p-2", size)} />;

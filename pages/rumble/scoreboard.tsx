@@ -15,15 +15,16 @@ import PinkPulse from "@/components/PinkLine/PinkPulse";
 
 import { ParsedUrlQuery } from "querystring";
 import api from "@/lib/cache";
-import { TeamSmall } from "@/types/types";
+import { Team, TeamSmall } from "@/types/types";
 import Peekaboo from "@/components/Peekaboo/Peekaboo";
+import { getTotalCompleted } from "@/lib/getTotalCompleted";
 
 export interface IParams extends ParsedUrlQuery {
   slug: string;
 }
 
 type Props = {
-  teams: TeamSmall[];
+  teams: Team[];
 };
 
 export const Scoreboard: NextPage<Props> = ({ teams }: Props) => {
@@ -55,13 +56,32 @@ export const Scoreboard: NextPage<Props> = ({ teams }: Props) => {
         <meta name="description" content="Spin Growth Devcon 2022" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className="fixed z-50 flex items-center justify-between h-2 p-4">
+      {/* <header className="fixed z-50 flex items-center justify-between h-2 p-4">
         <FadeIn delay={1}>
           <Link
             href="/"
             className="mt-2 text-lg underline cursor-pointer underline-offset-4 link-underline"
           >
             home
+          </Link>
+        </FadeIn>
+      </header> */}
+
+      <header className="fixed z-50 flex items-center justify-between h-2 p-4">
+        <FadeIn delay={1}>
+          <Link
+            href="/"
+            className="mt-2 mr-4 text-lg underline cursor-pointer underline-offset-4 link-underline"
+          >
+            home
+          </Link>
+        </FadeIn>
+        <FadeIn delay={1}>
+          <Link
+            href="/rumble"
+            className="mt-2 text-lg underline cursor-pointer underline-offset-4 link-underline"
+          >
+            teams
           </Link>
         </FadeIn>
       </header>
@@ -88,8 +108,8 @@ export const Scoreboard: NextPage<Props> = ({ teams }: Props) => {
           <Peekaboo />
         </div>
 
-        <div className="z-50 flex flex-col items-center content-center justify-center w-full h-full py-20 m-auto md:w-2/3">
-          <div className="z-50 w-full px-8">
+        <div className="z-40 flex flex-col items-center content-center justify-center w-full h-full py-20 m-auto md:w-2/3">
+          <div className="z-40 w-full px-8">
             <div
               id="split-text"
               className="mb-12 text-2xl uppercase md:text-4xl font-joystix"
@@ -124,8 +144,13 @@ export const Scoreboard: NextPage<Props> = ({ teams }: Props) => {
                           {t.members.join(", ")}
                         </div>
                       </div>
-                      <div className="items-end text-sm md:self-center md:text-2xl font-joystix justify-self-end">
-                        {t.points} PTS
+                      <div className="justify-self-end">
+                        <div className="items-end text-sm md:self-center md:text-2xl font-joystix justify-self-end">
+                          {t.points} PTS
+                        </div>
+                        <div className="items-center mb-2 text-sm md:text-lg font-opensans justify-self-center">
+                          {getTotalCompleted(t.tasks)} / {t.tasks.length ?? 10}
+                        </div>
                       </div>
 
                       <div
@@ -150,7 +175,7 @@ export const Scoreboard: NextPage<Props> = ({ teams }: Props) => {
 export const getServerSideProps: GetServerSideProps = async () => {
   try {
     await api.cache.get();
-    const teamCache: TeamSmall[] = await api.list();
+    const teamCache: Team[] = await api.list();
 
     teamCache.sort((a, b) => (a.points < b.points ? 1 : -1));
 

@@ -17,6 +17,7 @@ import { ParsedUrlQuery } from "querystring";
 import api from "@/lib/cache";
 import { Team } from "@/types/types";
 import { TeamTable } from "@/features/Teams/TeamTable";
+import Peekaboo from "@/components/Peekaboo/Peekaboo";
 
 export interface IParams extends ParsedUrlQuery {
   slug: string;
@@ -61,7 +62,7 @@ export const Teams: NextPage<Props> = ({ teams }: Props) => {
             href="/"
             className="mt-2 mr-4 text-lg underline cursor-pointer underline-offset-4 link-underline"
           >
-            back
+            home
           </Link>
         </FadeIn>
         <FadeIn delay={1}>
@@ -93,6 +94,7 @@ export const Teams: NextPage<Props> = ({ teams }: Props) => {
             placeholder="blur"
             quality={100}
           />
+          <Peekaboo />
         </div>
         <div className="flex flex-col items-center content-center justify-center h-full py-20 m-auto md:w-2/3">
           <div className="z-50 w-full px-8">
@@ -112,7 +114,7 @@ export const Teams: NextPage<Props> = ({ teams }: Props) => {
             </div>
             <div className="mt-20 mb-10">South</div>
 
-            <div className="grid grid-cols-[2fr,1fr] gap-y-8 gap-x-4">
+            <div className="md:grid md:grid-cols-[2fr,1fr] gap-y-8 ">
               {teams && <TeamTable teams={teams} location={"South"} />}
             </div>
           </div>
@@ -126,6 +128,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   try {
     await api.cache.get();
     const teamCache = await api.list();
+    teamCache.sort((a, b) => (a.points < b.points ? 1 : -1));
 
     return { props: { teams: teamCache ?? [] } };
   } catch (error) {
